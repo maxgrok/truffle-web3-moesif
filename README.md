@@ -1,4 +1,4 @@
-# Deploy a Dapp using Moesif 
+# Run a Dapp locally with Moesif monitoring JSON-RPC calls 
 
 Install truffle 
 
