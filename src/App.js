@@ -67,29 +67,6 @@ class App extends Component {
     })
   }
 
-  addToSimpleStorage() {
-  if (this.state.simpleStorageInstance && this.state.accounts) {
-    const value = this.storageAmountInput.value;
-    this.state.simpleStorageInstance.set(value, {from: this.state.accounts[0]})
-      .then((result) => {
-        return this.state.simpleStorageInstance.get.call(this.state.accounts[0])
-      }).then((result) => {
-        this.setState(prevState => ({
-          ...prevState,
-          storageValue: result.c[0]
-        }));
-      }).catch((err) => {
-        console.log('error');
-        console.log(err);
-      });
-  } else {
-    this.setState(prevState => ({
-      ...prevState,
-      error: new Error('simple storage instance not loaded')
-    }))
-  }
-}
-
   render() {
     return (
       <div className="App">
@@ -97,24 +74,10 @@ class App extends Component {
             <a href="#" className="pure-menu-heading pure-menu-link">Truffle Box</a>
         </nav>
 
+          
         <main className="container">
           <div className="pure-g">
             <div className="pure-u-1-1">
-            <form className="pure-form pure-form-stacked">
-  <fieldset>
-    <label htmlFor="storage">Storage Amount</label>
-    <input id="storage" type="number" ref={c => { this.storageAmountInput = c }} />
-    <button
-      className="pure-button"
-      onClick={(e) => {
-        e.preventDefault();
-        this.addToSimpleStorage()
-      }}
-    >
-      Set Storage
-    </button>
-  </fieldset>
-</form>
               <h1>Good to Go!</h1>
               <p>Your Truffle Box is installed and ready.</p>
               <h2>Smart Contract Example</h2>
